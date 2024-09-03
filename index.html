@@ -82,7 +82,7 @@
         }
 
         .content {
-            max-width: 800px;
+            max-width: 850px;
         }
 
         ul {
@@ -110,6 +110,22 @@
 
         .centered {
             text-align: center;
+        }
+
+        ul li code {
+            background-color: var(--input-background-theme);
+            color: var(--input-color-theme);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        ul li.special-code {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            font-size: 1.2em;
         }
 
     </style>
@@ -184,6 +200,7 @@
         <div class="content">
             <ul>
                 <li>Does not require code changes</li>
+                <li>Works locally and offline</li>
                 <li>Captures all argument values</li>
                 <li>See them all together in a single place</li>
                 <li>Does not care about performance</li>
@@ -199,7 +216,8 @@
             <ul>
                 <li>Download the agent</li>
                 <li>Add to the JVM command line:</li>
-                <li>Example: <code>java -javaagent:javaAgent.jar -jar yourApp.jar</code></li>
+                <li>Example:</li>
+                <li class="special-code"><code>java -javaagent:javaAgent.jar -jar yourApp.jar</code></li>
             </ul>
         </div>
     </div>
