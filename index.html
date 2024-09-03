@@ -25,9 +25,9 @@
         }
 
         * {
-            margin: 0px;
-            padding: 0px;
-            border: inherit;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html, body {
@@ -37,82 +37,100 @@
             color: var(--color-theme);
         }
 
-        img{
-            display:block;
-            margin:auto;
+        img {
+            display: block;
+            margin: auto;
         }
 
-        .grid {
+        .slide {
             height: 100%;
-            display: grid;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             background-color: var(--box-background-theme);
+            padding: 2rem;
         }
 
         h1 {
-            font-size: 5em;
+            font-size: 4em;
             color: var(--title-color-theme);
+            margin-bottom: 1rem;
         }
 
         h2 {
-            font-size: 3em;
-            margin-bottom: 0.5rem;;
+            font-size: 2.5em;
+            margin-bottom: 1rem;
         }
 
-        p, ul {
-            font-size: 2em;
-        }
-
-        .centered {
-            justify-self: center;
-            align-self: center;
-        }
-
-        .layout-title {
-            grid-template-columns: 1fr;
-            grid-template-rows: 0.6fr 1.5fr 0.9fr;
+        p, ul, li {
+            font-size: 1.5em;
+            margin-bottom: 0.5rem;
         }
 
         .header {
-            padding: 5em;
-            justify-self: center;
-            align-self: center;
+            margin-bottom: 1.5rem;
         }
 
-        .layout-title-content {
-            grid-template-columns: 1fr;
-            grid-template-rows: 0.4fr 1.6fr;
+        .layout-title img {
+            margin-bottom: 1rem;
         }
 
-        .layout-title-content div.body {
-            padding-left: 5em;
+        .layout-title p {
+            font-size: 2em;
         }
 
-        a {
-            color: var(--link-color-theme);
+        .content {
+            max-width: 800px;
         }
 
-        .ul {
-            padding: 1.5rem;
+        ul {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
+
+        ul li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        ul li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            top: -0.65rem; 
+            color: var(--title-color-theme);
+            font-size: 1.5em;
+            line-height: 1em;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
     
-    <div class="slide grid layout-title">
+    <div class="slide layout-title">
         <div class="header">
             <h1>Javaflame</h1>
         </div>
         <div class="centered">
-            <img class="centered" alt="logo" id="logo" width="300px" src="./logo.svg"/>
+            <img alt="logo" id="logo" width="300px" src="./logo.svg"/>
             <p>Better than System.out.println()</p>
         </div>
     </div>
 
-    <div class="slide grid layout-title-content">
+    <div class="slide">
         <div class="header">
             <h1>whoami</h1>
         </div>
-        <div class="body">
+        <div class="content">
             <ul>
                 <li>Software Engineer @ Gebit</li>
                 <li>Fullstack</li>
@@ -121,15 +139,12 @@
         </div>
     </div>
 
-    <div class="slide grid layout-title-content">
+    <div class="slide">
         <div class="header">
             <h1>First, the problem</h1>
         </div>
-        <div class="body">
+        <div class="content">
             <h2>How to figure out what is going on</h2>
-            <div >
-
-            </div>
             <ul>
                 <li>Printing on console</li>
                 <li>Add breakpoints</li>
@@ -138,11 +153,11 @@
         </div>
     </div>
 
-    <div class="slide grid layout-title-content">
+    <div class="slide">
         <div class="header">
             <h1>Printing on the console</h1>
         </div>
-        <div class="body">
+        <div class="content">
             <ul>
                 <li>Outputs get mixed up</li>
                 <li>Confusing?</li>
@@ -150,11 +165,11 @@
         </div>
     </div>
 
-    <div class="slide grid layout-title-content">
+    <div class="slide">
         <div class="header">
             <h1>Breakpoints</h1>
         </div>
-        <div class="body">
+        <div class="content">
             <ul>
                 <li>Slow - Only values for a single point in time</li>
                 <li>Localized - Has only the current stack</li>
@@ -162,98 +177,96 @@
         </div>
     </div>
 
-    <div class="slide grid layout-title-content">
+    <div class="slide">
         <div class="header">
             <h1>To get the big picture Javaflame</h1>
         </div>
-        <div class="body">
+        <div class="content">
             <ul>
                 <li>Does not require code changes</li>
                 <li>Captures all argument values</li>
-                <li>See them all together In a single place</li>
+                <li>See them all together in a single place</li>
                 <li>Does not care about performance</li>
             </ul>
         </div>
     </div>
 
-    <div class="slide grid layout-title-content">
+    <div class="slide">
         <div class="header">
             <h1>To use it</h1>
         </div>
-        <div class="body">
+        <div class="content">
             <ul>
                 <li>Download the agent</li>
-                <li>Add to the jvm commandline:</li>
-                <li>Example java -javaagent:javaAgent.jar -jar yourApp.jar</li>
+                <li>Add to the JVM command line:</li>
+                <li>Example: <code>java -javaagent:javaAgent.jar -jar yourApp.jar</code></li>
             </ul>
         </div>
     </div>
 
 <script>
-
-const getUrlVars = () => {
-    let vars = {}
-    window.location.hash.replace(/[#&]+([^=&]+)=([^&]*)/gi, (m,key,value) => vars[key] = value)
-    return vars 
-}
-
-const setUrlVar = (key, value) => {
-    const oldHref = window.location.hash
-    let merkerIndex = oldHref.indexOf('#')
-    let pageUrl = oldHref.substring(0, merkerIndex)
-    if(merkerIndex === -1) pageUrl = oldHref
-    let vars = getUrlVars()
-    if(vars[key] && vars[key] === value) return
-    vars[key] = value
-    let params = ""
-    for (const [key, value] of Object.entries(vars)) {
-        if(!params)
-            params += `${key}=${value}`
-        else
-            params += `&${key}=${value}`
+    const getUrlVars = () => {
+        let vars = {}
+        window.location.hash.replace(/[#&]+([^=&]+)=([^&]*)/gi, (m,key,value) => vars[key] = value)
+        return vars 
     }
-    window.location.hash = params
-}
 
-let slides = Array.from(document.querySelectorAll(".slide"))
-let currentSlide = 0
-let lastSlide = slides.length - 1 
-const showSlide = (slideIndex) => {
-    slides.forEach(s => s.style.display = "none")
-    slides[slideIndex].style.display = null
-}
-const setSlide = (slideIndex) => {
-    currentSlide = parseInt(slideIndex)
-    currentSlide = currentSlide < 0 ? 0 : currentSlide
-    currentSlide = currentSlide > lastSlide ? lastSlide : currentSlide
-    setUrlVar("slide", currentSlide)
-    showSlide(currentSlide)
-}
-const nextSlide = () => setSlide(currentSlide + 1)
-const previousSlide = () => setSlide(currentSlide - 1)
-
-if(getUrlVars()["slide"])
-    setSlide(getUrlVars()["slide"])
-else
-    setSlide("0")
-
-document.onkeydown = (e) => {
-    const left = 37
-    const right = 39
-    const backspace = 8
-    const space = 32
-    switch(e.keyCode){
-        case left:
-        case backspace:
-            previousSlide()
-            break
-        case right:
-        case space:
-            nextSlide()
-            break
+    const setUrlVar = (key, value) => {
+        const oldHref = window.location.hash
+        let merkerIndex = oldHref.indexOf('#')
+        let pageUrl = oldHref.substring(0, merkerIndex)
+        if(merkerIndex === -1) pageUrl = oldHref
+        let vars = getUrlVars()
+        if(vars[key] && vars[key] === value) return
+        vars[key] = value
+        let params = ""
+        for (const [key, value] of Object.entries(vars)) {
+            if(!params)
+                params += `${key}=${value}`
+            else
+                params += `&${key}=${value}`
+        }
+        window.location.hash = params
     }
-}
 
+    let slides = Array.from(document.querySelectorAll(".slide"))
+    let currentSlide = 0
+    let lastSlide = slides.length - 1 
+    const showSlide = (slideIndex) => {
+        slides.forEach(s => s.style.display = "none")
+        slides[slideIndex].style.display = null
+    }
+    const setSlide = (slideIndex) => {
+        currentSlide = parseInt(slideIndex)
+        currentSlide = currentSlide < 0 ? 0 : currentSlide
+        currentSlide = currentSlide > lastSlide ? lastSlide : currentSlide
+        setUrlVar("slide", currentSlide)
+        showSlide(currentSlide)
+    }
+    const nextSlide = () => setSlide(currentSlide + 1)
+    const previousSlide = () => setSlide(currentSlide - 1)
+
+    if(getUrlVars()["slide"])
+        setSlide(getUrlVars()["slide"])
+    else
+        setSlide("0")
+
+    document.onkeydown = (e) => {
+        const left = 37
+        const right = 39
+        const backspace = 8
+        const space = 32
+        switch(e.keyCode){
+            case left:
+            case backspace:
+                previousSlide()
+                break
+            case right:
+            case space:
+                nextSlide()
+                break
+        }
+    }
 </script>
 </body>
 </html>
