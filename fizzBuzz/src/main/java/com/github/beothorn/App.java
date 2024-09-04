@@ -23,7 +23,7 @@ public class App {
 
     void printFizzBuzzFor(final int max) {
         for (int i = 1; i <= max; i++) {
-            System.out.println(getLineFor(i));
+            System.out.print(getLineFor(i) + " ");
         }
     }
 

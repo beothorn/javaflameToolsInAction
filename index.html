@@ -195,6 +195,32 @@
 
     <div class="slide">
         <div class="header">
+            <h1>Mission control, observability or profilers</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li>Show call hierarchy</li>
+                <li>Do not show arguments (because it is a bad idea)</li>
+                <li>Mission control screenshot here</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Java agent</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li>Transforms class bytecode</li>
+                <li>Trivial to do with bytebuddy</li>
+                <li>Not reusable, not dynamic</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
             <h1>To get the big picture Javaflame</h1>
         </div>
         <div class="content">
@@ -221,6 +247,122 @@
             </ul>
         </div>
     </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>A simple fizz buzz</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Run with unit tests</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Multithread</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+                <li class="special-code"><code>java -javaagent:javaflame.jar=port:8080 -jar fizzBuzz.jar 40</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Search Feature and dev tools</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Too much data - Filter expressions</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Intercept third party (postgres sql)</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Ignore calls between two functions</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Intercept calls instead</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>What's inside the agent</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li>Expression parser</li>
+                <li>Internal Stack</li>
+                <li>Scheduled snapshot</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>What's inside the page</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li>Join Snapshot</li>
+                <li>Canvas Flame Graph render</li>
+                <li>Vanilla javascript</li>
+            </ul>
+        </div>
+    </div>
+
 
 <script>
     const getUrlVars = () => {
