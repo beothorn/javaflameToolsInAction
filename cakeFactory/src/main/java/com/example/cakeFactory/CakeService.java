@@ -11,6 +11,13 @@ public class CakeService {
     @Autowired
     private CakeRepository cakeRepository;
 
+    @Autowired
+    private NationalCakeRegistryService nationalCakeRegistryService;
+
+    public void sellCake(final String cakeType) {
+        nationalCakeRegistryService.registerCakeSale(cakeType);
+    }
+
     public List<Cake> getAllCakes() {
         return cakeRepository.findAll();
     }

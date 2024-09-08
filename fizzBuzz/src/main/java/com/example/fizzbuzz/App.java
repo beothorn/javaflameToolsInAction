@@ -5,19 +5,29 @@ package com.example.fizzbuzz;
 
 public class App {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         App app = new App();
-        if (args.length != 1) {
-            System.err.println("Usage: java -jar fizzbuzz.jar [number]");
+        if (args.length == 0) {
+            System.err.println("Usage: java -jar fizzbuzz.jar [number] <number for another thread>");
             System.exit(1);
         }
+        final Thread[] allFizzBuzz = new Thread[args.length];
         try {
-            int max = Integer.parseInt(args[0]);
-            System.out.println(app.getFizzBuzzFor(max));
+            for (int i = 0; i < args.length; i++) {
+                final int max = Integer.parseInt(args[i]);
+                allFizzBuzz[i] = new Thread(() -> {
+                    System.out.println(max + " -> " + app.getFizzBuzzFor(max));
+                });
+                allFizzBuzz[i].setName("FizzBuzz "+i);
+                allFizzBuzz[i].start();
+            }
         } catch (NumberFormatException e){
             System.err.println("Use valid integers as parameter." +
                     "\nUsage: java -jar fizzbuzz.jar [number]");
             System.exit(1);
+        }
+        for (final Thread fizzBuzzThread : allFizzBuzz) {
+            fizzBuzzThread.join();
         }
     }
 

@@ -1,0 +1,3 @@
+Duplicate entries on javaflame for cakefactory  
+Agent running twice on cake factory  
+DO NOT forget preparing the db  
