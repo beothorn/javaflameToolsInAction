@@ -1,3 +1,6 @@
 Duplicate entries on javaflame for cakefactory  
+-- It appears to be related to how IntelliJ IDEA is starting your class via Gradle by generating the task on the fly.
+  The workaround is to disable the run delegation to Gradle.
 Agent running twice on cake factory  
+-- Same gradle issue
 DO NOT forget preparing the db  
