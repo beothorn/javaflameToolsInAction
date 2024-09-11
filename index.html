@@ -327,7 +327,7 @@
             <ul>
                 <li>All merged snapshots at global variable dataForGraph</code></li>
                 <li class="special-code"><code>dataForGraph.map(d => d.thread)</code></li>
-                <li class="special-code"><code></code>search(s => s.name.includes("buzz"))</code></li>
+                <li class="special-code"><code>search(s => s.name.includes("buzz"))</code></li>
             </ul>
         </div>
     </div>
@@ -348,8 +348,9 @@
             <h1>Too much data - Filter expressions</h1>
         </div>
         <div class="content">
+            <img width="600px" src="./imgs/toomuchdata.png" />
             <ul>
-                <li class="special-code"><code>java -javaagent:javaflame.jar=filter:com.example.cakeFactory -jar ...</code></li>
+                <li class="special-code"><code>-javaagent:javaflame.jar=filter:com.example.cakeFactory</code></li>
             </ul>
         </div>
     </div>
@@ -365,7 +366,8 @@
                 <li>Method matcher</li>
                 <li class="special-code"><code>filter:com.example.cakeFactory.CakeService#sellCake</code></li>
                 <li>Conditional match expression</li>
-                <li class="special-code"><code>filter:(com.example.cakeFactory)</code></li>
+                <li class="special-code"><code>filter:(example&&cakeFactory)||(com.foobar)</code></li>
+                <li class="special-code"><code>filter:(!org.springframework)&&(!org.hibernate)</code></li>
             </ul>
         </div>
     </div>
