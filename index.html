@@ -162,6 +162,7 @@
         <div class="content">
             <ul>
                 <li>Simple general debugging tool</li>
+                <li>Born out of necessity</li>
                 <li>Java (but also kotlin and other jvm languages)</li>
                 <li>How can you use it or make it your own</li>
             </ul>
@@ -222,6 +223,20 @@
 
     <div class="slide">
         <div class="header">
+            <h1>Why/Where to use it</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li>Not on production</li>
+                <li>Not for measuring performance (unless you have a big error margin)</li>
+                <li>Run locally, on your dev setup.</li>
+                <li>No external dependencies.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
             <h1>Java agent</h1>
         </div>
         <div class="content">
@@ -267,7 +282,6 @@
                 <li>Download the agent</li>
                 <li>Add to the JVM command line:</li>
                 <li>Example:</li>
-                <li class="special-code"><code>java -javaagent:javaAgent.jar -jar yourApp.jar</code></li>
             </ul>
         </div>
     </div>
