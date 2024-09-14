@@ -99,8 +99,8 @@
 <form th:action="@{/buyCake}" method="post">
     <div id="cake-pictures">
         <div th:each="cakeListing : ${cakeListings}" class="cake-option">
-            <input type="radio" th:id="${'cake-' + cakeListing.cake.id}" name="cakeId" th:value="${cakeListing.cake.id}" />
-            <label th:for="${'cake-' + cakeListing.cake.id}">
+            <label>
+                <input type="radio" th:id="${'cake-' + cakeListing.cake.id}" name="cakeId" th:value="${cakeListing.cake.id}" />
                 <span th:text="${cakeListing.quantityAvailable} + ' cakes left'">999 cakes left</span>
                 <img th:src="${cakeListing.cake.image}" th:alt="${cakeListing.cake.flavour}" />
                 <span th:text="${cakeListing.cake.flavour} + ' - $' + ${cakeListing.cake.price}"></span>
