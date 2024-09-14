@@ -1,4 +1,4 @@
-package com.example.cakeFactory;
+package com.example.cakeFactory.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,14 +13,16 @@ public class Cake {
     private Long id;
 
     private String flavour;
+    private String image;
     private double price;
 
     // Constructors
     public Cake() {}
 
-    public Cake(String flavour, double price) {
+    public Cake(String flavour, String image, double price) {
         this.flavour = flavour;
         this.price = price;
+        this.image = image;
     }
 
     // Getters and Setters
@@ -46,5 +48,23 @@ public class Cake {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(final String image) {
+        this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Cake{" +
+                "id=" + id +
+                ", flavour='" + flavour + '\'' +
+                ", image='" + image + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

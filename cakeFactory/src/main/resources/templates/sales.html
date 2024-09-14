@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Firecake Bakery - Sales</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        /* General Styles (copied from cakes.html) */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f0e3;
+            color: #4a3f35;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4e1c1;
+            color: #a05a2c;
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            color: #8b572a;
+        }
+
+        button {
+            background-color: #a05a2c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            width: 300px;
+        }
+
+        button:hover {
+            background-color: #8b4726;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Cake sales</h1>
+<div class="message-container">
+
+    <img src="thankYou.jpg" alt="The cake is a lie." />
+    <p>Your cake is on the way! We hope you enjoy your delicious treat.</p>
+    <button onclick="window.location.href='/'">Back to Cakes</button>
+</div>
+
+</body>
+</html>

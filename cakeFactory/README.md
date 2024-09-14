@@ -1,8 +1,8 @@
 # How to run this
 
 ```
-docker rm some-postgres &&\ 
-docker run --network=host --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres &&\
+docker rm some-postgres && docker run --network=host --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
 docker exec -it $(docker ps -q --filter "ancestor=postgres") psql -U postgres -c "CREATE DATABASE cake_factory_db;"         
 
 

@@ -1,0 +1,1 @@
+-javaagent:/home/lucas/dev/presentations/javaflameToolsInAction/javaflame.jar=filter:(com.example.cakeFactory)||(org.postgresql.jdbc.PgConnection#prepareStatement)

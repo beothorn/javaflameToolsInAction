@@ -98,47 +98,28 @@
 
 <form th:action="@{/buyCake}" method="post">
     <div id="cake-pictures">
-        <div class="cake-option">
-            <input type="radio" id="chocolate" name="cake" value="Chocolate Cake" />
-            <label for="chocolate">
-                <img src="chocolate.jpg" alt="Chocolate Cake" />
-                Chocolate Cake - $5.00
-            </label>
-        </div>
-
-        <div class="cake-option">
-            <input type="radio" id="white" name="cake" value="White Cake" />
-            <label for="white">
-                <img src="white.jpg" alt="White Cake" />
-                White Cake - $6.00
-            </label>
-        </div>
-
-        <div class="cake-option">
-            <input type="radio" id="strawberry" name="cake" value="Strawberry Cake" />
-            <label for="strawberry">
-                <img src="strawberry.jpg" alt="Strawberry Cake" />
-                Strawberry Cake - $5.30
+        <div th:each="cakeListing : ${cakeListings}" class="cake-option">
+            <input type="radio" th:id="${'cake-' + cakeListing.cake.id}" name="cakeId" th:value="${cakeListing.cake.id}" />
+            <label th:for="${'cake-' + cakeListing.cake.id}">
+                <span th:text="${cakeListing.quantityAvailable} + ' cakes left'">999 cakes left</span>
+                <img th:src="${cakeListing.cake.image}" th:alt="${cakeListing.cake.flavour}" />
+                <span th:text="${cakeListing.cake.flavour} + ' - $' + ${cakeListing.cake.price}"></span>
             </label>
         </div>
     </div>
 
-    <button type="submit" disabled>Buy</button>  <!-- Disabled initially -->
-
+    <button type="submit" disabled>Buy</button>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const buyButton = document.querySelector('button[type="submit"]');
-            const cakeOptions = document.querySelectorAll('input[name="cake"]');
+            const cakeOptions = document.querySelectorAll('input[name="cakeId"]');
 
-            // Initially disable the buy button
             buyButton.disabled = true;
 
-            // Add event listener to each cake option
             cakeOptions.forEach(option => {
                 option.addEventListener('change', function() {
-                    // Enable the button if any cake option is selected
-                    if (document.querySelector('input[name="cake"]:checked')) {
+                    if (document.querySelector('input[name="cakeId"]:checked')) {
                         buyButton.disabled = false;
                     }
                 });

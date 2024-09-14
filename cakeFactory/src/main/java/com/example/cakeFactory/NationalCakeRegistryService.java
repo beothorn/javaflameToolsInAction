@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class NationalCakeRegistryService {
 
-    public void registerCakeSale(final String cakeType){
-        printResult(cakeType);
+    public void registerCakeSale(final long cakeId){
+        printResult(cakeId);
     }
 
-    private static void printResult(final String cakeType) {
-        System.out.println(cakeType + " registered");
+    private static void printResult(final long cakeId) {
+        System.out.println(cakeId + " registered");
     }
 
 }
