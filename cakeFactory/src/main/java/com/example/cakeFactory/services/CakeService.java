@@ -50,6 +50,7 @@ public class CakeService {
                     finalPrice,
                     LocalDateTime.now()
             );
+            nationalCakeRegistryService.registerCakeSale(cakeId);
             saleRepository.save(sale);
             return sale;
         }
