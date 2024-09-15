@@ -157,66 +157,44 @@
 
     <div class="slide">
         <div class="header">
-            <h1>What this is about</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li>Simple general debugging tool</li>
-                <li>Born out of necessity</li>
-                <li>Java (but also kotlin and other jvm languages)</li>
-                <li>How can you use it or make it your own</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
             <h1>First, the problem</h1>
         </div>
         <div class="content">
             <h2>How to figure out what is going on</h2>
             <ul>
-                <li>Printing on console</li>
-                <li>Add breakpoints</li>
-                <li>Step by step look at the stack</li>
+                <li>What is going on?</li>
+                <li>How does it work right now?</li>
+                <li>Printing on the console</li>
+                <li>Breakpoints</li>
             </ul>
         </div>
     </div>
 
     <div class="slide">
         <div class="header">
-            <h1>Printing on the console</h1>
+            <h1>Flamegraph Observability and Profilers</h1>
         </div>
         <div class="content">
             <ul>
-                <li>Changes the code</li>
-                <li>Outputs get mixed up</li>
-                <li>Confusing?</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
-            <h1>Breakpoints</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li>Slow - Only values for a single point in time</li>
-                <li>Localized - Has only the current stack</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
-            <h1>Mission control, observability or profilers</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li>Show call hierarchy</li>
+                <li>Show call stack over time</li>
                 <li>Do not show arguments (because it is a very bad idea)</li>
                 <li>Mission control screenshot here</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>To get the big picture Javaflame</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li>Simple general debugging tool</li>
+                <li>Does not require code changes</li>
+                <li>Works locally and offline</li>
+                <li>Captures all argument values</li>
+                <li>Works on libraries</li>
+                <li>See them all together in a single place</li>
             </ul>
         </div>
     </div>
@@ -237,44 +215,6 @@
 
     <div class="slide">
         <div class="header">
-            <h1>Java agent</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li>Transforms class bytecode</li>
-                <li>Trivial to do with bytebuddy</li>
-                <li>Not reusable, not dynamic</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
-            <h1>Java agent</h1>
-        </div>
-        <div class="content">
-            <img src="./imgs/byteBuddySimpleExample.png" alt="Byte buddy simple main interceptor" />
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
-            <h1>To get the big picture Javaflame</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li>Does not require code changes</li>
-                <li>Works locally and offline</li>
-                <li>Captures all argument values</li>
-                <li>Not only for my own code</li>
-                <li>See them all together in a single place</li>
-                <li>Does not care about performance</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
             <h1>To use it</h1>
         </div>
         <div class="content">
@@ -282,17 +222,10 @@
                 <li>Download the agent</li>
                 <li>Add to the JVM command line:</li>
                 <li>Example:</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
-            <h1>A simple fizz buzz</h1>
-        </div>
-        <div class="content">
-            <ul>
+                <li>Game: Multiples of 3 print Fizz, of 5 print Buzz</li>
                 <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+                <li class="special-code"><code>dataForGraph.map(d => d.thread)</code></li>
+                <li class="special-code"><code>search(s => s.name.includes("buzz"))</code></li>
             </ul>
         </div>
     </div>
@@ -304,30 +237,6 @@
         <div class="content">
             <ul>
                 <li class="special-code"><img width="900px" src="./imgs/runUnitTest.jpg" /></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
-            <h1>Multithread</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40 5 20 10</code></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
-            <h1>Search Feature and dev tools</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li>All merged snapshots at global variable dataForGraph</code></li>
-                <li class="special-code"><code>dataForGraph.map(d => d.thread)</code></li>
-                <li class="special-code"><code>search(s => s.name.includes("buzz"))</code></li>
             </ul>
         </div>
     </div>
@@ -378,6 +287,7 @@
         </div>
         <div class="content">
             <ul>
+                <li class="special-code"><code>filter:org.postgresql.jdbc.PgConnection#prepareStatement</code></li>
                 <li class="special-code"><code>filter:(com.example.cakeFactory)||(org.postgresql.jdbc.PgConnection#prepareStatement)</code></li>
             </ul>
         </div>
@@ -407,6 +317,28 @@
 
     <div class="slide">
         <div class="header">
+            <h1>Java agent</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li>Transforms class bytecode</li>
+                <li>Trivial to do with bytebuddy</li>
+                <li>Not reusable, not dynamic</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
+            <h1>Java agent</h1>
+        </div>
+        <div class="content">
+            <img src="./imgs/byteBuddySimpleExample.png" alt="Byte buddy simple main interceptor" />
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="header">
             <h1>What's inside the agent</h1>
         </div>
         <div class="content">
@@ -430,7 +362,6 @@
             </ul>
         </div>
     </div>
-
 
 <script>
     const getUrlVars = () => {
