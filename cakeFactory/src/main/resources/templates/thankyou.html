@@ -60,6 +60,7 @@
 <div class="message-container">
 
     <img src="thankYou.jpg" alt="The cake is a lie." />
+    <p>Final price for your <strong th:text="${sale.cake.flavour}">Chocolate</strong> cake is <strong th:text="'$' +  ${#numbers.formatDecimal(sale.finalPriceWithTaxes, 1, 'DEFAULT', 2, 'DEFAULT')}">15</strong>.</p>
     <p>Your cake is on the way! We hope you enjoy your delicious treat.</p>
     <button onclick="window.location.href='/'">Back to Cakes</button>
 </div>

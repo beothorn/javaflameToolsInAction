@@ -103,7 +103,7 @@
                 <input type="radio" th:id="${'cake-' + cakeListing.cake.id}" name="cakeId" th:value="${cakeListing.cake.id}" />
                 <span th:text="${cakeListing.quantityAvailable} + ' cakes left'">999 cakes left</span>
                 <img th:src="${cakeListing.cake.image}" th:alt="${cakeListing.cake.flavour}" />
-                <span th:text="${cakeListing.cake.flavour} + ' - $' + ${cakeListing.cake.price}"></span>
+                <span th:text="${cakeListing.cake.flavour} + ' - $' + ${#numbers.formatDecimal(cakeListing.cake.price, 1, 'DEFAULT', 2, 'DEFAULT')} + ' + taxes'"></span>
             </label>
         </div>
     </div>

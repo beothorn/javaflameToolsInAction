@@ -1,52 +1,62 @@
 # whoami
 
 My name is Lucas, I am currently a Software Engineer at Gebit.
-My carrer is mostly working as a Fullstack, although right now I am a developer working on the self checkout from Aldi.
+My carreer is mostly working as a Fullstack, although right now I am a developer working on the self checkout from Aldi.
 On my free time I like to experiment with all sorts of things.
-You can look for me as Beothorn, it is my handle at github, and many other places and as far as I know, noone uses this handle so if you find it pretty certain that that's me.
+You can look for me as Beothorn, it is my handle at github, and many other places and as far as I know, 
+no one uses this handle so if you find it pretty certain that that's me.
 
 # What this is about
 
-I will be presenting today Javaflame a very simple debugging tool.  
-It works by intrumenting bytecode so although it is written with Java as a target, it should also work other jvm languages like scala and kotlin.  
+I will be presenting today Javaflame, a very simple debugging tool.  
+It works by instrumenting bytecode so although it is written with Java as a target, it should also work other JVM languages like scala and kotlin.  
 I hope today I can show how can you use this tool to understand better what is happening inside your code or maybe inspire you to write your own solution.
 
 # First, the problem
 
 When you are presented with a bug or a new feature that you need to implement, or when you start working on a new project, I think everyone comes up with the same question.
 Which is, what is going on here?
-Yes, you have an idea in theory what should be happening, and why (hopefully), but the truth is that usually there is so much happening, and so much missing context that it is hard to get a big picture.
+Yes, you have an idea in theory what should be happening, and why (hopefully), but the truth is that usually there is so much happening, 
+and so much missing context that it is hard to get a big picture.
 I think everyone has been in this situation, I know I did, and there are many ways to try to begin figuring it all out.
 
-Some of those are just plain old print on the console (which gives a good idea if the code is even executed and with what values).
-Or, a little bit more advanced just adding a lot of breakpoints. This is better than printing on the console as, in this case, you can see the call stack and you can also control the flow so you can see what is happening.
-Those are valid ways to do it, but there are some minor issues with each aproach.
+Some of those are just plain old print on the console, which gives a good idea if the code is even executed and with what values.
+Or, a little bit more advanced just adding a lot of breakpoints. This is better than printing on the console as, in this case, you can see 
+the call stack and you can also control the flow so you can see what is happening.
+Those are valid ways to do it, but there are some minor issues with each approach.
 
 # Printing on the console
 
-We should not underestimate printing on the console. It is flexible, it works without the need of any other tool and it gives a very context about the time when certain events happen.
+We should not underestimate printing on the console. It is flexible, it works without the need of any other tool and 
+it gives a good context about the time when certain events happen.
 But, there are some problems. First is that you need to change the code to add the output.
-That means you need to go through whatever compile/run cycle your application needs to run and also that you should not forget to delete your debugging code later.
-When there is already a lot of logs, either added by you or not, it starts to become hard to see your entry among all other entries on your log. 
-Sometimes it is like looking for a drop in the ocean. Without a very good filtering tool it can be very slow to figure what happened, specially if the logs keep rolling non-stop.
-And the price to pay for flexibility is that it can become a little confusing to read the output, specially if it is big or if it is some kind of composition.  
+That means you need to go through whatever compile/run cycle your application needs to run and also that 
+you should not forget to delete your debugging code later.
+When there is already a lot of logs, either added by you or not, it starts to become hard to see your entry among 
+all other entries on your log. 
+Sometimes it is like looking for a drop in the ocean. Without a very good filtering tool it can be 
+very slow to figure what happened, specially if the logs keep rolling non-stop.
+And the price to pay for flexibility is that it can become a little confusing to read the output, 
+specially if it is big or if it is some kind of composition.  
 
 # Breakpoints
 
 Breakpoints are great because they give you context.
 But the context they give you is, obviously, from the point of the execution where you are right now.
 It is possible to move down the stack and get information, but this is limited to the current function call.  
-Moving on in time is slow. You can't have context about execution that already happened and to get future context you either know exactly where to stop, on which case you add a breakpoint, or you move step by step, analyzing what happens.
+Moving on in time is slow. You can't have context about execution that already happened and to get future context 
+you either know exactly where to stop, on which case you add a breakpoint, or you move step by step, analyzing what happens.
 Well, debugging step by step can be slow if what you wnat to get is the big picture, so maybe there is a better way?
 
 # Mission control, observability or profilers
 
 Well, there is. If you could record the execution and find a nice way to visualize it this would already solve your issue.  
 And there are ways to have something like this.  
-First, let me show you the flamegraph. I think this must be familiar to many already, but if not this is what it looks like.
+First, let me show a flamegraph. I think this must be familiar to many already, but if not this is what it looks like.
 You get the function calls bottom up, where each row is a subsequent function call. So, every call above was originated from the one below.
 Time is the x axis, so you can have a very good idea of what is calling what and when.  
-You can also see how long a function call take in relation to the other function calls, but for understanding what is going on, only the relation and order between calls is important.
+You can also see how long a function call take in relation to the other function calls, but for understanding what 
+is going on, only the relation and order between calls is important.
 
 And, actually, there are already lots of tools that do that. Observability tools like datadog or almost any tool to measure performance has this view.
 Here for example you can see a flamegraph generated by the JDK mission control from oracle.  

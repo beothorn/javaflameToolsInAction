@@ -59,9 +59,27 @@
 <h1>Cake sales</h1>
 <div class="message-container">
 
-    <img src="thankYou.jpg" alt="The cake is a lie." />
-    <p>Your cake is on the way! We hope you enjoy your delicious treat.</p>
-    <button onclick="window.location.href='/'">Back to Cakes</button>
+    <table>
+        <thead>
+        <tr>
+            <th>Sale ID</th>
+            <th>Cake Name</th>
+            <th>Price</th>
+            <th>Final Price with Taxes</th>
+            <th>Timestamp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sale : ${allSales}">
+            <td th:text="${sale.saleId}"></td>
+            <td th:text="${sale.cake.flavour}"></td>
+            <td th:text="${sale.price}"></td>
+            <td th:text="${sale.finalPriceWithTaxes}"></td>
+            <td th:text="${#temporals.format(sale.timestamp, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
 
 </body>

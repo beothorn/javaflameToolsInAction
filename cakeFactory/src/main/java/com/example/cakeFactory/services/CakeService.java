@@ -9,9 +9,7 @@ import com.example.cakeFactory.repos.InventoryRepository;
 import com.example.cakeFactory.repos.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +28,10 @@ public class CakeService {
     @Autowired
     private NationalCakeRegistryService nationalCakeRegistryService;
 
-    public void sellCake(final long cakeId) {
+    @Autowired
+    private Taxes taxes;
+
+    public Sale sellCake(final long cakeId) {
         Cake selectedCake = cakeRepository.findById(cakeId).orElseThrow();
         Inventory inventory = inventoryRepository.findByCake(selectedCake);
 
@@ -39,9 +40,8 @@ public class CakeService {
             inventory.setQuantityAvailable(inventory.getQuantityAvailable() - 1);
             inventoryRepository.save(inventory);
 
-            // Calculate final price with taxes (e.g., 10% tax)
-            double taxRate = 0.10;
-            double finalPrice = selectedCake.getPrice() * (1 + taxRate);
+            // Calculate final price with taxes
+            double finalPrice = taxes.priceWithTaxes(selectedCake.getPrice());
 
             // Record the sale
             Sale sale = new Sale(
@@ -51,7 +51,9 @@ public class CakeService {
                     LocalDateTime.now()
             );
             saleRepository.save(sale);
+            return sale;
         }
+        return null; // This is just a demo, we don't care about anything but the happy day
     }
 
     public List<CakeListing> getAllCakesListings() {
@@ -68,5 +70,9 @@ public class CakeService {
 
     public Cake getCakeById(Long id) {
         return cakeRepository.findById(id).orElse(null);
+    }
+
+    public List<Sale> getSales() {
+        return saleRepository.findAll();
     }
 }
