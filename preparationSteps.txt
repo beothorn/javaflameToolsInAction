@@ -1,0 +1,21 @@
+Run docker postgres
+Open intellij fizz buzz
+Have tests ready
+Open intellij cake factory
+Have tests ready
+Run cake factory demo
+Open custom interceptor code
+prepare commands
+java -jar fizzBuzz.jar 40
+java -jar fizzBuzz.jar 40 20 10 1
+java -javaagent:javaflame.jar -jar fizzBuzz.jar 40 20 10 1
+For fizz buzz test
+-javaagent:/home/lucas-santos/dev/javaflameToolsInAction/javaflame.jar=filter:com.example
+For the cake demo
+-javaagent:/home/lucas-santos/dev/javaflameToolsInAction/javaflame.jar=filter:com.example
+-javaagent:/home/lucas-santos/dev/javaflameToolsInAction/javaflame.jar=filter:com.example.cakeFactory.CakeService#sellCake
+-javaagent:/home/lucas-santos/dev/javaflameToolsInAction/javaflame.jar=filter:org.postgresql.jdbc.PgConnection#prepareStatement
+-javaagent:/home/lucas-santos/dev/javaflameToolsInAction/javaflame.jar=filter:(com.example.cakeFactory)||(org.postgresql.jdbc.PgConnection#prepareStatement)
+Custom interceptor
+java "-javaagent:javaflame.jar=filter:NO_FILTER,intercept:com.example>com.example.intercept.ConsoleInterceptor#interceptMethod"  -cp "fizzBuzz.jar:interceptor.jar:fizzbuzz.jar" com.example.fizzbuzz.App 40 20
+

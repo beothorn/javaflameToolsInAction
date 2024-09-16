@@ -82,7 +82,7 @@
         }
 
         .content {
-            max-width: 850px;
+            max-width: 1500px;
         }
 
         ul {
@@ -243,20 +243,12 @@
 
     <div class="slide">
         <div class="header">
-            <h1>Cake factory Demo</h1>
-        </div>
-        <div class="content">
-            <ul>
-                <li>Spring Boot, Thymeleaf, Postgres</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="header">
             <h1>Too much data - Filter expressions</h1>
         </div>
         <div class="content">
+            <ul>
+                <li>Cake Factory demo</li>
+            </ul>
             <img width="600px" src="./imgs/toomuchdata.png" />
             <ul>
                 <li class="special-code"><code>-javaagent:javaflame.jar=filter:com.example.cakeFactory</code></li>
@@ -310,7 +302,7 @@
         </div>
         <div class="content">
             <ul>
-                <li class="special-code"><code>java -javaagent:javaflame.jar -jar fizzBuzz.jar 40</code></li>
+                <li class="special-code"><code>"-javaagent:javaflame.jar=intercept:FILTER>METHOD"</code></li>
             </ul>
         </div>
     </div>

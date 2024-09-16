@@ -6,12 +6,6 @@ On my free time I like to experiment with all sorts of things.
 You can look for me as Beothorn, it is my handle at github, and many other places and as far as I know, 
 no one uses this handle so if you find it pretty certain that that's me.
 
-# What this is about
-
-I will be presenting today Javaflame, a very simple debugging tool.  
-It works by instrumenting bytecode so although it is written with Java as a target, it should also work other JVM languages like scala and kotlin.  
-I hope today I can show how can you use this tool to understand better what is happening inside your code or maybe inspire you to write your own solution.
-
 # First, the problem
 
 When you are presented with a bug or a new feature that you need to implement, or when you start working on a new project, I think everyone comes up with the same question.
@@ -21,12 +15,6 @@ and so much missing context that it is hard to get a big picture.
 I think everyone has been in this situation, I know I did, and there are many ways to try to begin figuring it all out.
 
 Some of those are just plain old print on the console, which gives a good idea if the code is even executed and with what values.
-Or, a little bit more advanced just adding a lot of breakpoints. This is better than printing on the console as, in this case, you can see 
-the call stack and you can also control the flow so you can see what is happening.
-Those are valid ways to do it, but there are some minor issues with each approach.
-
-# Printing on the console
-
 We should not underestimate printing on the console. It is flexible, it works without the need of any other tool and 
 it gives a good context about the time when certain events happen.
 But, there are some problems. First is that you need to change the code to add the output.
@@ -39,8 +27,9 @@ very slow to figure what happened, specially if the logs keep rolling non-stop.
 And the price to pay for flexibility is that it can become a little confusing to read the output, 
 specially if it is big or if it is some kind of composition.  
 
-# Breakpoints
-
+Or, just adding a lot of breakpoints. This is better than printing on the console as, in this case, you can see
+the call stack and you can also control the flow so you can see what is happening.
+Those are valid ways to do it, but there are some minor issues with each approach.
 Breakpoints are great because they give you context.
 But the context they give you is, obviously, from the point of the execution where you are right now.
 It is possible to move down the stack and get information, but this is limited to the current function call.  
@@ -75,14 +64,6 @@ This is not something to run on production. It is something to maybe run on your
 Javaflame is an agent that does not require any server, or another process running on parallel or even configuration files.
 It is designed to get all required values from the command line and output an html file with the collected data.
 
-# Java agent
-
-Javaflame does not work by sampling the stack. Instead it changes the bytecode of the functions to call code that puts the calls on a separate stack and stores the values of all parameters.  
-Internally it is using a library called byte buddy. It is a very nice library that gives you a fluent interface to manipulate bytecode.  
-In fact, although javaflame is a general solution that is easy to use, coming up with something more specialized is trivial.  
-
-<Byte buddy simple example here>
-
 # To get the big picture Javaflame
 
 Does not require code changes
@@ -112,3 +93,13 @@ Explain search shows the reverse hierarchy. explain what filter does.
 Show that there is a lot going on, unrelated to the actual system
 
 Too much data - Filter expressions
+
+
+# Java agent
+
+Javaflame does not work by sampling the stack. Instead it changes the bytecode of the functions to call code that puts the calls on a separate stack and stores the values of all parameters.  
+Internally it is using a library called byte buddy. It is a very nice library that gives you a fluent interface to manipulate bytecode.  
+In fact, although javaflame is a general solution that is easy to use, coming up with something more specialized is trivial.  
+
+<Byte buddy simple example here>
+
