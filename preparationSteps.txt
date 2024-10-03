@@ -1,9 +1,20 @@
 Run docker postgres
+
+docker rm some-postgres && docker run --network=host --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+docker exec -it $(docker ps -q --filter "ancestor=postgres") psql -U postgres -c "CREATE DATABASE cake_factory_db;" 
+
 Open intellij fizz buzz
 Have tests ready
+TestWithJFlame
+Configure Intellij screen size
+
 Open intellij cake factory
 Have tests ready
+
+TestWithJFlame
+
 Run cake factory demo
+http://localhost:8080/
 Open custom interceptor code
 prepare commands
 java -jar fizzBuzz.jar 40
