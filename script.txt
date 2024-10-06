@@ -1,7 +1,7 @@
 # whoami
 
 My name is Lucas, I am currently a Software Engineer at Gebit.
-My carreer is mostly working as a Fullstack, although right now I am a developer working on the self checkout from Aldi.
+My carreer is mostly working as a Fullstack, although right now I am a developer working on a POS system.
 On my free time I like to experiment with all sorts of things.
 You can look for me as Beothorn, it is my handle at github, and many other places and as far as I know, 
 no one uses this handle so if you find it pretty certain that that's me.
