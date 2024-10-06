@@ -28,5 +28,5 @@ For the cake demo
 -javaagent:/home/lucas-santos/dev/javaflameToolsInAction/javaflame.jar=filter:org.postgresql.jdbc.PgConnection#prepareStatement
 -javaagent:/home/lucas-santos/dev/javaflameToolsInAction/javaflame.jar=filter:(com.example.cakeFactory)||(org.postgresql.jdbc.PgConnection#prepareStatement)
 Custom interceptor
-java "-javaagent:javaflame.jar=filter:NO_FILTER,intercept:com.example>com.example.intercept.ConsoleInterceptor#interceptMethod"  -cp "fizzBuzz.jar:interceptor.jar:fizzbuzz.jar" com.example.fizzbuzz.App 40 20
+java "-javaagent:javaflame.jar=filter:NO_FILTER,intercept:com.example>com.example.intercept.ConsoleInterceptor#interceptMethod"  -cp "interceptor.jar:fizzbuzz.jar" com.example.fizzbuzz.App 40 20
 
